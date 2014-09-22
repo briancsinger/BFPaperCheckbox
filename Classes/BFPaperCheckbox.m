@@ -135,7 +135,7 @@ static NSString *const mark_eraseLongLine = @"largeCheckmarkLine2";
 {
     // Defaults:
     self.radius = radius;
-//    self.lineWidth = 2.0f;
+    self.lineWidth = 2.0f;
     self.centeredCheckmark = YES;
     self.finishedAnimations = YES;
     _isChecked = NO;
@@ -410,6 +410,11 @@ static NSString *const mark_eraseLongLine = @"largeCheckmarkLine2";
 
 - (void)drawCheckBoxAnimated:(BOOL)animated
 {
+    self.lineLeft.lineWidth   = self.lineWidth;
+    self.lineTop.lineWidth    = self.lineWidth;
+    self.lineRight.lineWidth  = self.lineWidth;
+    self.lineBottom.lineWidth = self.lineWidth;
+    
     self.lineLeft.opacity   = 1;
     self.lineTop.opacity    = 1;
     self.lineRight.opacity  = 1;
@@ -746,6 +751,11 @@ static NSString *const mark_eraseLongLine = @"largeCheckmarkLine2";
 
 - (void)drawCheckmarkAnimated:(BOOL)animated
 {
+    self.lineLeft.lineWidth   = self.lineWidth;
+    self.lineTop.lineWidth    = self.lineWidth;
+    self.lineRight.lineWidth  = self.lineWidth;
+    self.lineBottom.lineWidth = self.lineWidth;
+    
     self.lineLeft.opacity = 0;
     self.lineTop.opacity = 0;
     
