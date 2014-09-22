@@ -306,7 +306,7 @@ static NSString *const mark_eraseLongLine = @"largeCheckmarkLine2";
     //NSLog(@"expanding a tap circle");
     
     // Spawn a growing circle that "ripples" through the button:
-    CGFloat tapCircleDiameterEndValue = (self.rippleFromTapLocation) ? self.radius * 20 : self.radius * 2.f; // if the circle comes from the center, its the perfect size. otherwise it will be quite small.
+    CGFloat tapCircleDiameterEndValue = (self.rippleFromTapLocation) ? self.radius * 4 : self.radius * 2.f; // if the circle comes from the center, its the perfect size. otherwise it will be quite small.
 
     // Calculate the tap circle's ending diameter:
     CGFloat tapCircleFinalDiameter = (self.rippleFromTapLocation) ? self.radius * 4 : self.radius * 2.f; // if the circle comes from the center, its the perfect size. otherwise it will be quite small.
