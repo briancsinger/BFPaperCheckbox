@@ -135,7 +135,7 @@ static NSString *const mark_eraseLongLine = @"largeCheckmarkLine2";
 {
     // Defaults:
     self.radius = radius;
-    self.lineWidth = 2.0f;
+//    self.lineWidth = 2.0f;
     self.centeredCheckmark = YES;
     self.finishedAnimations = YES;
     _isChecked = NO;
