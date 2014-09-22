@@ -37,6 +37,16 @@
 @end
 
 @interface BFPaperCheckbox : UIButton <UIGestureRecognizerDelegate>
+
+//width of checkbox and check line
+@property CGFloat lineWidth;
+
+/** If you want to move the checkmark offcenter set to NO. Default is YES. */
+@property BOOL centeredCheckmark;
+
+//center point for the checkbox
+@property CGPoint centerPoint;
+
 /** A UIColor to use for the checkmark color. Note that self.tintColor will be used for the square box color. */
 @property UIColor *checkmarkColor;
 

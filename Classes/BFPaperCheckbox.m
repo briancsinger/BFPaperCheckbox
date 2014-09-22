@@ -31,7 +31,6 @@
 #import "UIColor+BFPaperColors.h"
 
 @interface BFPaperCheckbox()
-@property CGPoint centerPoint;
 @property (nonatomic, strong) CAShapeLayer *lineLeft;   // Also used for checkmark left, shorter line.
 @property (nonatomic, strong) CAShapeLayer *lineTop;
 @property (nonatomic, strong) CAShapeLayer *lineRight;
@@ -136,6 +135,8 @@ static NSString *const mark_eraseLongLine = @"largeCheckmarkLine2";
 {
     // Defaults:
     self.radius = radius;
+    self.lineWidth = 2.0f;
+    self.centeredCheckmark = YES;
     self.finishedAnimations = YES;
     _isChecked = NO;
     self.rippleFromTapLocation = YES;
@@ -165,7 +166,7 @@ static NSString *const mark_eraseLongLine = @"largeCheckmarkLine2";
         layer.lineJoin = kCALineJoinRound;
         layer.lineCap = kCALineCapSquare;
         layer.contentsScale = self.layer.contentsScale;
-        layer.lineWidth = 2.f;
+        layer.lineWidth = self.lineWidth;
         layer.strokeColor = self.tintColor.CGColor;
         
         
@@ -306,7 +307,6 @@ static NSString *const mark_eraseLongLine = @"largeCheckmarkLine2";
     //NSLog(@"expanding a tap circle");
     
     // Spawn a growing circle that "ripples" through the button:
-    
     CGFloat tapCircleDiameterEndValue = (self.rippleFromTapLocation) ? self.radius * 4 : self.radius * 2.f; // if the circle comes from the center, its the perfect size. otherwise it will be quite small.
 
     // Calculate the tap circle's ending diameter:
@@ -981,7 +981,8 @@ static NSString *const mark_eraseLongLine = @"largeCheckmarkLine2";
 - (CGPathRef)createCenteredLineWithRadius:(CGFloat)radius angle:(CGFloat)angle offset:(CGPoint)offset
 // you are responsible for releasing the return CGPath
 {
-    self.centerPoint = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
+    if (self.centeredCheckmark)
+        self.centerPoint = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
 
     CGMutablePathRef path = CGPathCreateMutable();
     
