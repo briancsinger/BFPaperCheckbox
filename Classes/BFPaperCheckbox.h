@@ -47,6 +47,9 @@
 //center point for the checkbox
 @property CGPoint centerPoint;
 
+/** radius of tap cirecle. Defaults to 40.0f */
+@property CGFloat radius;
+
 /** A UIColor to use for the checkmark color. Note that self.tintColor will be used for the square box color. */
 @property UIColor *checkmarkColor;
 

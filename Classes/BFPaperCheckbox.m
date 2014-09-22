@@ -38,7 +38,6 @@
 @property CGPoint tapPoint;
 @property NSMutableArray *rippleAnimationQueue;
 @property NSMutableArray *deathRowForCircleLayers;  // This is where old circle layers go to be killed :(
-@property CGFloat radius;
 @property int checkboxSidesCompletedAnimating;          // This should bounce between 0 and 4, representing the number of checkbox sides which have completed animating.
 @property int checkmarkSidesCompletedAnimating;         // This should bounce between 0 and 2, representing the number of checkmark sides which have completed animating.
 @property BOOL finishedAnimations;
@@ -307,7 +306,7 @@ static NSString *const mark_eraseLongLine = @"largeCheckmarkLine2";
     //NSLog(@"expanding a tap circle");
     
     // Spawn a growing circle that "ripples" through the button:
-    CGFloat tapCircleDiameterEndValue = (self.rippleFromTapLocation) ? self.radius * 4 : self.radius * 2.f; // if the circle comes from the center, its the perfect size. otherwise it will be quite small.
+    CGFloat tapCircleDiameterEndValue = (self.rippleFromTapLocation) ? self.radius * 20 : self.radius * 2.f; // if the circle comes from the center, its the perfect size. otherwise it will be quite small.
 
     // Calculate the tap circle's ending diameter:
     CGFloat tapCircleFinalDiameter = (self.rippleFromTapLocation) ? self.radius * 4 : self.radius * 2.f; // if the circle comes from the center, its the perfect size. otherwise it will be quite small.
