@@ -415,10 +415,10 @@ static NSString *const mark_eraseLongLine = @"largeCheckmarkLine2";
     self.lineRight.lineWidth  = self.lineWidth;
     self.lineBottom.lineWidth = self.lineWidth;
     
-    self.lineLeft.opacity   = 1;
-    self.lineTop.opacity    = 1;
-    self.lineRight.opacity  = 1;
-    self.lineBottom.opacity = 1;
+    self.lineLeft.opacity   = (!self.hideCheckbox) ? 1 : 0;
+    self.lineTop.opacity    = (!self.hideCheckbox) ? 1 : 0;
+    self.lineRight.opacity  = (!self.hideCheckbox) ? 1 : 0;
+    self.lineBottom.opacity = (!self.hideCheckbox) ? 1 : 0;
     
     // Using layers and paths:
     CGPathRef newLeftPath   = NULL;
@@ -537,10 +537,10 @@ static NSString *const mark_eraseLongLine = @"largeCheckmarkLine2";
     self.finishedAnimations = NO;
     self.checkmarkSidesCompletedAnimating = 0;
     
-    self.lineLeft.opacity   = 1;
-    self.lineTop.opacity    = 1;
-    self.lineRight.opacity  = 1;
-    self.lineBottom.opacity = 1;
+    self.lineLeft.opacity   = (!self.hideCheckbox) ? 1 : 0;
+    self.lineTop.opacity    = (!self.hideCheckbox) ? 1 : 0;
+    self.lineRight.opacity  = (!self.hideCheckbox) ? 1 : 0;
+    self.lineBottom.opacity = (!self.hideCheckbox) ? 1 : 0;
 
     CGPathRef newLeftPath   = NULL;
     CGPathRef newTopPath    = NULL;
@@ -832,6 +832,7 @@ static NSString *const mark_eraseLongLine = @"largeCheckmarkLine2";
     
     newRightPath = [self createCenteredLineWithRadius:radius angle:-5 * M_PI_4 offset:CGPointMake(offset - slightOffsetForCheckmarkCentering.x, offset + slightOffsetForCheckmarkCentering.y)];
     newBottomPath = [self createCenteredLineWithRadius:radius angle:M_PI_4 offset:CGPointMake(-offset - slightOffsetForCheckmarkCentering.x, offset + slightOffsetForCheckmarkCentering.y)];
+    
     if (animated) {
         {
             // RIGHT:
@@ -951,11 +952,8 @@ static NSString *const mark_eraseLongLine = @"largeCheckmarkLine2";
         if (self.checkboxSidesCompletedAnimating >= 4) {
             NSLog(@"FINISHED spinning box CCW");
             self.checkboxSidesCompletedAnimating = 0;
-            
-            if (!self.hideCheckbox) {
-                self.finishedAnimations = YES;
-                [self drawCheckBoxAnimated:YES];
-            }
+            self.finishedAnimations = YES;
+            [self drawCheckBoxAnimated:YES];
             //NSLog(@"FINISHED animating 4 sides of checkbox");
         }
     }
@@ -978,10 +976,7 @@ static NSString *const mark_eraseLongLine = @"largeCheckmarkLine2";
         if (self.checkmarkSidesCompletedAnimating >= 2) {
             NSLog(@"FINISHED shrinking checkmark");
             self.checkmarkSidesCompletedAnimating = 0;
-            if (self.hideCheckbox)
-                self.finishedAnimations = YES;
-            else
-                [self spinCheckboxAnimated:YES withAngle1:M_PI_4 andAngle2:-5*M_PI_4 andRadiusDenominator:4 forDuration:bfPaperCheckbox_animationDurationConstant / 2.f];
+            [self spinCheckboxAnimated:YES withAngle1:M_PI_4 andAngle2:-5*M_PI_4 andRadiusDenominator:4 forDuration:bfPaperCheckbox_animationDurationConstant / 2.f];
         }
     }
     // Remove tap-circles:
