@@ -44,6 +44,9 @@
 /** If you want to move the checkmark offcenter set to NO. Default is YES. */
 @property BOOL centeredCheckmark;
 
+/** Just draws the checkbox. Default is NO. */
+@property BOOL hideCheckbox;
+
 //center point for the checkbox
 @property CGPoint centerPoint;
 
