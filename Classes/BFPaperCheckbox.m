@@ -758,6 +758,8 @@ static NSString *const mark_eraseLongLine = @"largeCheckmarkLine2";
     
     self.lineLeft.opacity = 0;
     self.lineTop.opacity = 0;
+    self.lineRight.opacity = 1;
+    self.lineBottom.opacity = 1;
     
     CGPathRef newRightPath  = NULL;
     CGPathRef newBottomPath = NULL;
