@@ -737,6 +737,11 @@ static NSString *const mark_eraseLongLine = @"largeCheckmarkLine2";
     self.lineRight.path = newRightPath;
     self.lineBottom.path = newBottomPath;
     
+    self.lineBottom.opacity = 0;
+    self.lineRight.opacity = 0;
+    self.lineLeft.opacity = 0;
+    self.lineTop.opacity = 0;
+    
     self.lineLeft.strokeColor = self.checkmarkColor.CGColor;
     self.lineTop.strokeColor = self.checkmarkColor.CGColor;
     self.lineRight.strokeColor = self.checkmarkColor.CGColor;
