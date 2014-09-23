@@ -737,11 +737,6 @@ static NSString *const mark_eraseLongLine = @"largeCheckmarkLine2";
     self.lineRight.path = newRightPath;
     self.lineBottom.path = newBottomPath;
     
-    self.lineBottom.opacity = 0;
-    self.lineRight.opacity = 0;
-    self.lineLeft.opacity = 0;
-    self.lineTop.opacity = 0;
-    
     self.lineLeft.strokeColor = self.checkmarkColor.CGColor;
     self.lineTop.strokeColor = self.checkmarkColor.CGColor;
     self.lineRight.strokeColor = self.checkmarkColor.CGColor;
@@ -983,7 +978,13 @@ static NSString *const mark_eraseLongLine = @"largeCheckmarkLine2";
         if (self.checkmarkSidesCompletedAnimating >= 2) {
             NSLog(@"FINISHED shrinking checkmark");
             self.checkmarkSidesCompletedAnimating = 0;
-            [self spinCheckboxAnimated:YES withAngle1:M_PI_4 andAngle2:-5*M_PI_4 andRadiusDenominator:4 forDuration:bfPaperCheckbox_animationDurationConstant / 2.f];
+            
+            if (self.hideCheckbox) {
+                self.finishedAnimations = YES;
+            }
+            else {
+                [self spinCheckboxAnimated:YES withAngle1:M_PI_4 andAngle2:-5*M_PI_4 andRadiusDenominator:4 forDuration:bfPaperCheckbox_animationDurationConstant / 2.f];
+            }
         }
     }
     // Remove tap-circles:
