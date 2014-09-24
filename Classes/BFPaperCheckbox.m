@@ -228,18 +228,19 @@ static NSString *const mark_eraseLongLine = @"largeCheckmarkLine2";
         return;
     }
     
-    if (self.delegate && [(id)self.delegate canPerformAction:@selector(paperCheckboxShouldChangeState) withSender:self]) {
-        if ([self.delegate paperCheckboxShouldChangeState])
-            [self private_switchStatesAnimated:YES];
-    }
-    else
-        [self private_switchStatesAnimated:YES];
 }
 
 
 #pragma mark - Utility functions
 - (void)private_switchStatesAnimated:(BOOL)animated
 {
+    
+    if (self.delegate && [(id)self.delegate canPerformAction:@selector(paperCheckboxShouldChangeState) withSender:self]) {
+        if (![self.delegate paperCheckboxShouldChangeState])
+            return;
+    }
+    
+    
     // Change states:
     self.isChecked = !self.isChecked;
     //NSLog(@"self.isChecked: %@", self.isChecked ? @"YES" : @"NO");
