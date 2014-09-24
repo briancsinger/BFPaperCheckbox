@@ -34,6 +34,8 @@
 @optional
 /** An optional protocol method for detecting when the checkbox state changed. You can check its current state here with 'checkbox.isChecked'. */
 - (void)paperCheckboxChangedState:(BFPaperCheckbox *)checkbox;
+- (BOOL)paperCheckboxShouldChangeState;
+
 @end
 
 @interface BFPaperCheckbox : UIButton <UIGestureRecognizerDelegate>

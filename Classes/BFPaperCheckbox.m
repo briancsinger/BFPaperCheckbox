@@ -227,7 +227,13 @@ static NSString *const mark_eraseLongLine = @"largeCheckmarkLine2";
         [self fadeTapCircleOut];
         return;
     }
-    [self private_switchStatesAnimated:YES];
+    
+    if (self.delegate && [(id)self.delegate canPerformAction:@selector(paperCheckboxShouldChangeState) withSender:self]) {
+        if ([self.delegate paperCheckboxShouldChangeState])
+            [self private_switchStatesAnimated:YES];
+    }
+    else
+        [self private_switchStatesAnimated:YES];
 }
 
 
